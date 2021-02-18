@@ -7,7 +7,7 @@ So, this is a converter which converts from an input image, palette file, and sc
 - screens.reorder: text file containing one line only, and the order of screens to place (in the example, the first 4 numbers in the file are 0, 1, 4, 5; so the first four screens in order are the first, second, fifth, and sixth screens scrolling from left to right, top to bottom)
 - Level.png: literally a png of the level
 
-**Output: **
+**Output:**
 - tiles.chr: A character rom file containing all the tiles in the entire level
 - missingColors.txt: a text file displaying errors and missing colours
 - tiles.asm: an assembly file dictating the layout of each screen as an array of tiles
