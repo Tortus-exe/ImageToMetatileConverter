@@ -101,9 +101,9 @@ public class Main {
 			new Color(Integer.valueOf("FFFFFF", 16))
 			));
 //			[[  INPUT FILES  ]]
-		final String palettesFilePath = "./Concrete Man/palettes.txt";
-		final String imageFileName = "./Concrete Man/concrete_man_naked.png";
-		final String screenReorderFileName = "./Concrete Man/screenReorder.txt";
+		final String palettesFilePath = "./Tornado man clouds/palettes.txt";
+		final String imageFileName = "./Tornado man clouds/TORNADO_MAN_BUT_JUST_CLOUDS.png";
+		final String screenReorderFileName = "./Tornado man clouds/screenReorder.txt";
 //			[[  OUTPUT FILES  ]]
 		final String outputCHRName = "tiles.chr";
 		final String outputTileScreenName = "tiles.asm";
@@ -243,9 +243,9 @@ public class Main {
 					for(int p = 0; p < screenHeightPX; p++) {
 						for(int j = 0; j < screenWidthPX; j++) {
 							correctedScreen[(p*screenWidthPX)+j] = currentScreen[(p*screenWidthPX*numScreensPerRow)+j];
-					//		if(currentScreen[(p*screenWidthPX*numScreensPerRow)+j] == 0) {
-					//			System.out.println((p*screenWidthPX*numScreensPerRow)+j);
-					//		}
+						//	if(currentScreen[(p*screenWidthPX*numScreensPerRow)+j] == 0) {
+						//		System.out.println((p*screenWidthPX*numScreensPerRow)+j);
+						//	}
 						}
 					}
 					pixelsRaw[indexToPixelsRaw] = correctedScreen;
@@ -379,6 +379,9 @@ public class Main {
 					}
 				}
 				int currentlyUsedPalette = currentScreenAsMetatileSizedPaletteBlocks[(x/2)+((y/2)*screenWidthPX/16)];
+				if(currentlyUsedPalette == 4) {
+						currentlyUsedPalette = 3;
+				}
 				Color[] usedPalette = new Color[4];
 				currentPalettes.subList((4*currentlyUsedPalette), (4*currentlyUsedPalette)+4).toArray(usedPalette);
 				for(int pixel = 0; pixel < currentTile.length; pixel++) {
@@ -536,7 +539,18 @@ public class Main {
 			for(int y = 0; y < missingColorList.size(); y++) {
 				mbw.write("At X: " + missingInfoList.get(y)[1] + " Y: " + missingInfoList.get(y)[2] + " tile #:" + missingInfoList.get(y)[0] + " screen: " + (missingInfoList.get(y)[3]+1) + " cols: ");
 				for(Color col : missingColorList.get(y)) {
-					mbw.write("#" + Integer.toHexString(col.getRGB()).substring(2, 8).toUpperCase() + " ");
+					String b=Integer.toHexString(col.getRGB());
+					if(b.length() == 6) {
+						b = "xx" + b;
+					} else if(b.length() == 4) {
+						b = "xxxx" + b;
+					} else if (b.length() == 1) {
+						b = "xxxxxxx" + b;
+					}
+					if(b.length() < 8) {
+						System.out.print(b);
+					}
+					mbw.write("#" + b.substring(2, 8).toUpperCase() + " ");
 				}
 				mbw.write("\n");
 			}
@@ -569,6 +583,12 @@ public class Main {
 				loBits[px/8] += TileList.get(tile)[px]%2;
 			}
 			for(int f_byte = 0; f_byte < finalHi.length; f_byte++) {
+				try {
+					Integer.parseInt(hiBits[f_byte], 2);	
+					Integer.parseInt(loBits[f_byte], 2);	
+				} catch (Exception e) {
+					break;
+				}
 				finalHi[f_byte] = (byte) Integer.parseInt(hiBits[f_byte], 2);
 				finalLo[f_byte] = (byte) Integer.parseInt(loBits[f_byte], 2);
 			}
@@ -798,7 +818,11 @@ public class Main {
 				int metatileTileIndex = Integer.parseInt(binaryString, 2);	//the index of tile in the metatile
 				if ((x/16)+((y/16)*16) < MetatileList.size()) {
 					int tileIndexValue = MetatileList.get((x/16)+((y/16)*16))[metatileTileIndex];
+					try{
 					metatileListImage.setRGB(x, y, GrayScaleColourPalette.get( TileList.get(tileIndexValue)[(x%8)+((y%8)*8)] ).getRGB());
+					} catch(IndexOutOfBoundsException e) {
+						break;
+					}
 				}
 			}
 		}
