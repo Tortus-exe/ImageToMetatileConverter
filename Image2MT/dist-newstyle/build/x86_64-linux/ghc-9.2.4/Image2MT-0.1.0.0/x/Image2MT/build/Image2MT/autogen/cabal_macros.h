@@ -30,6 +30,16 @@
   (major1) == 4 && (major2) <  16 || \
   (major1) == 4 && (major2) == 16 && (minor) <= 3)
 #endif /* MIN_VERSION_base */
+/* package orthotope-0.1.2.0 */
+#ifndef VERSION_orthotope
+#define VERSION_orthotope "0.1.2.0"
+#endif /* VERSION_orthotope */
+#ifndef MIN_VERSION_orthotope
+#define MIN_VERSION_orthotope(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 2)
+#endif /* MIN_VERSION_orthotope */
 /* package system-filepath-0.4.14 */
 #ifndef VERSION_system_filepath
 #define VERSION_system_filepath "0.4.14"
@@ -40,6 +50,16 @@
   (major1) == 0 && (major2) <  4 || \
   (major1) == 0 && (major2) == 4 && (minor) <= 14)
 #endif /* MIN_VERSION_system_filepath */
+/* package vector-0.13.0.0 */
+#ifndef VERSION_vector
+#define VERSION_vector "0.13.0.0"
+#endif /* VERSION_vector */
+#ifndef MIN_VERSION_vector
+#define MIN_VERSION_vector(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  13 || \
+  (major1) == 0 && (major2) == 13 && (minor) <= 0)
+#endif /* MIN_VERSION_vector */
 
 /* tool gcc-12.2.0 */
 #ifndef TOOL_VERSION_gcc

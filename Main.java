@@ -101,9 +101,9 @@ public class Main {
 			new Color(Integer.valueOf("FFFFFF", 16))
 			));
 //			[[  INPUT FILES  ]]
-		final String palettesFilePath = "./Tornado man clouds/palettes.txt";
-		final String imageFileName = "./Tornado man clouds/TORNADO_MAN_BUT_JUST_CLOUDS.png";
-		final String screenReorderFileName = "./Tornado man clouds/screenReorder.txt";
+		final String palettesFilePath = "./Tornado Man/palettes.txt";
+		final String imageFileName = "./Tornado Man/TORNADO_MAN_FINALLY_DONE.png";
+		final String screenReorderFileName = "./Tornado Man/screenReorder.txt";
 //			[[  OUTPUT FILES  ]]
 		final String outputCHRName = "tiles.chr";
 		final String outputTileScreenName = "tiles.asm";

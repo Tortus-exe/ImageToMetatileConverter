@@ -29,6 +29,6 @@ executable Image2MT
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.16.3.0, JuicyPixels, system-filepath
+    build-depends:    base ^>=4.16.3.0, JuicyPixels, system-filepath, orthotope, vector
     hs-source-dirs:   src
     default-language: Haskell2010
