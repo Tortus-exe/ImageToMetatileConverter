@@ -251,8 +251,7 @@ public class Main {
 					pixelsRaw[indexToPixelsRaw] = correctedScreen;
 					indexToPixelsRaw++;
 					//OUTPUT A TEST IMAGE DISPLAYING WHAT THE COMPUTER SEES OF THE SCREEN
-					/*
-					if(i == 7) {
+					if(i == 38) {
 						BufferedImage testImage = new BufferedImage(screenWidthPX, screenHeightPX, BufferedImage.TYPE_INT_ARGB);
 						for (int r = 0; r < correctedScreen.length; r++) {
 							testImage.setRGB(r%screenWidthPX, r/screenWidthPX, correctedScreen[r]);
@@ -264,7 +263,6 @@ public class Main {
 
 						}
 					}
-					*/
 				}
 			}
 		} catch(InterruptedException e) {}
